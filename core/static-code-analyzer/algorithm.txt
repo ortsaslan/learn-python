@@ -15,5 +15,4 @@
 6. Вывести в стандартный вывод информацию о строках с нарушениями в формате -
 	Line 3: S001 Too long
 	Сформировать эту строку следующим образом:
-	"Line {issue_lines[k]}: {issue_lines[v]} {issues_dict[v]}"
- 	
+	"Line {issue_lines[k]}: {issue_lines[v]} {issues_dict[v]}" 	
