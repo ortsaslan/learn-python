@@ -17,5 +17,3 @@
 	Сформировать эту строку следующим образом:
 	"Line {issue_lines[k]}: {issue_lines[v]} {issues_dict[v]}"
  	
-	
-
