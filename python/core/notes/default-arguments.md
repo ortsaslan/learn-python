@@ -33,5 +33,5 @@ To avoid this behavior we assign `None` to default parameter wich should take mu
 
 According to PEP 8, we don't use spaces around `=` when define default parameters.
 
-    wrong: *parameter = value*
-    correct: *parameter=value*
+    wrong: parameter = value
+    correct: parameter=value
