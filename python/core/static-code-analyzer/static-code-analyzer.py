@@ -64,10 +64,13 @@ def check_s003(line, line_num):
             elif "#" in line and i < line.index("#"):
                 add_line(line_num, "S003")
                 break
+            elif "#" not in line and not qmark:
+                add_line(line_num, "S003")
+                break
             
 
 def check_s004(line, line_num):
-    if "#" in line:
+    if "#" in line and line.index("#") != 0:
         hsign_indx = line.index("#")
         if line[hsign_indx - 2: hsign_indx] != "  ":
             add_line(line_num, "S004")
@@ -90,7 +93,7 @@ def main():
     global blank_lines_counter
     line_counter = 0
 
-    file = open("testfile.txt", "r")
+    file = open(input(), "r")
 
     for line in file:
         line_counter += 1
