@@ -24,7 +24,7 @@ def add_line(path, line, issue_code):
 def log_issue(issue_lines_dict):
     for path in issue_lines_dict:
         for line in issue_lines_dict[path]:
-            for issue_code in issue_lines_dict[line]:
+            for issue_code in issue_lines_dict[path][line]:
                 print(f"{path}: Line {line}: {issue_code} {style_issues[issue_code]}")
 
 
@@ -57,23 +57,23 @@ def check_s003(path, line, line_num):
                 qmark = '"'
             qmark_first_indx = line.find(qmark)
             qmark_second_indx = line.find(qmark, qmark_first_indx + 1)
-        
+
         for i in smcol_indxs:
             if "#" in line and qmark:
                 if i < line.index("#"):
                     if not qmark_first_indx < i < qmark_second_indx:
-                        add_line(line_num, "S003")
+                        add_line(path, line_num, "S003")
                         break
             elif qmark and not qmark_first_indx < i < qmark_second_indx:
-                    add_line(path, line_num, "S003")
-                    break
+                add_line(path, line_num, "S003")
+                break
             elif "#" in line and i < line.index("#"):
                 add_line(path, line_num, "S003")
                 break
             elif "#" not in line and not qmark:
                 add_line(path, line_num, "S003")
                 break
-            
+
 
 def check_s004(path, line, line_num):
     if "#" in line and line.index("#") != 0:
@@ -95,14 +95,14 @@ def check_s006(path, line_num):
         add_line(path, line_num, "S006")
 
 
-def check_code(path, line, line_counter):
+def check_code(path, line, line_num):
     line = line.lower()
-    check_s001(path, line, line_counter)
-    check_s002(path, line, line_counter)
-    check_s003(path, line, line_counter)
-    check_s004(path, line, line_counter)
-    check_s005(path, line, line_counter)
-    check_s006(line_counter)
+    check_s001(path, line, line_num)
+    check_s002(path, line, line_num)
+    check_s003(path, line, line_num)
+    check_s004(path, line, line_num)
+    check_s005(path, line, line_num)
+    check_s006(path, line_num)
 
 
 def main():
@@ -114,11 +114,13 @@ def main():
     if os.path.isdir(path_from_arg):
         for dirpath, dirnames, files in os.walk(path_from_arg):
             for file_name in files:
-                if file_name.endswith(".py"): 
+                if file_name.endswith(".py"):
                     files_to_check.append(os.path.join(dirpath, file_name))
     else:
         files_to_check.append(path_from_arg)
-            
+
+    files_to_check.sort()
+
     for file_path in files_to_check:
         with open(file_path, 'r') as file:
             for line in file:
@@ -127,6 +129,9 @@ def main():
                     blank_lines_counter += 1
                 else:
                     check_code(file_path, line, line_counter)
+                    blank_lines_counter = 0
+        line_counter = 0
+        blank_lines_counter = 0
 
     log_issue(lines_with_issues)
 
