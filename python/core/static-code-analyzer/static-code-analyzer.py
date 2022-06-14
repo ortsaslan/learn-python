@@ -87,6 +87,7 @@ def check_s004(path, line, line_num):
 
 
 def check_s005(path, line, line_num):
+    line = line.lower()
     if "todo" in line:
         if "#" in line and line.index("#") < line.index("todo"):
             add_line(path, line_num, "S005")
@@ -119,6 +120,7 @@ def check_s008(path, line, line_num):
             if line[i] != " ":
                 class_name.append(line[i])
         class_name = "".join(class_name)
+        #print(class_name)
 
         pattern = r"[A-Z]\w*[A-Z]?\w*\(?[A-Z]\w*[A-Z]?\w*\)?:"
         ismatch = bool(re.match(pattern, class_name))
@@ -140,7 +142,6 @@ def check_s009(path, line, line_num):
 
 
 def check_code(path, line, line_num):
-    line = line.lower()
     check_s001(path, line, line_num)
     check_s002(path, line, line_num)
     check_s003(path, line, line_num)
