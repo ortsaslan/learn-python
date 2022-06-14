@@ -1,5 +1,6 @@
 import sys
 import os
+import re
 
 
 blank_lines_counter = 0
@@ -9,7 +10,10 @@ style_issues = {'S001': 'Too long',
                 'S003': 'Unnecessary semicolon',
                 'S004': 'At least two spaces required before inline comments',
                 'S005': 'TODO found',
-                'S006': 'More than two blank lines used before this line'}
+                'S006': 'More than two blank lines used before this line',
+                'S007': 'Too many spaces after construction_name',
+                'S008': 'Class name should be written in CamelCase',
+                'S009': 'Function name should be written in snake_case'}
 
 
 def add_line(path, line, issue_code):
@@ -95,6 +99,46 @@ def check_s006(path, line_num):
         add_line(path, line_num, "S006")
 
 
+def check_s007(path, line, line_num):
+    constr_name = None
+    if "def" in line:
+        constr_name = "def"
+    elif "class" in line:
+        constr_name = "class"
+    if constr_name:
+        indx = line.index(constr_name) + len(constr_name)
+        if line[indx:indx+2] == "  ":
+            add_line(path, line_num, "S007")
+
+
+def check_s008(path, line, line_num):
+    if "class" in line:
+        indx = line.index("class") + len("class")
+        class_name = []
+        for i in range(indx, len(line)):
+            if line[i] != " ":
+                class_name.append(line[i])
+        class_name = "".join(class_name)
+
+        pattern = r"[A-Z]\w*[A-Z]?\w*\(?[A-Z]\w*[A-Z]?\w*\)?:"
+        ismatch = bool(re.match(pattern, class_name))
+        if not ismatch:
+            add_line(path, line_num, "S008")
+
+
+def check_s009(path, line, line_num):
+    if "def" in line:
+        indx = line.index("def") + len("def")
+        func_name = []
+        for i in range(indx, len(line)):
+            if line[i] != " ":
+                func_name.append(line[i])
+        func_name = "".join(func_name)
+
+        if func_name != func_name.lower():
+            add_line(path, line_num, "S009")
+
+
 def check_code(path, line, line_num):
     line = line.lower()
     check_s001(path, line, line_num)
@@ -103,6 +147,9 @@ def check_code(path, line, line_num):
     check_s004(path, line, line_num)
     check_s005(path, line, line_num)
     check_s006(path, line_num)
+    check_s007(path, line, line_num)
+    check_s008(path, line, line_num)
+    check_s009(path, line, line_num)
 
 
 def main():
