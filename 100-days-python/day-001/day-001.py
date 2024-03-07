@@ -6,4 +6,4 @@ user_city = input()
 print("\nWhat's your pet's name?")
 user_pet = input()
 
-print("\nYour band name could be", user_city, user_pet + ".")
+print(f"\nYour band name could be {user_city} {user_pet}.")
