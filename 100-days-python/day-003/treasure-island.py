@@ -21,3 +21,22 @@ ____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/____
 *******************************************************************************
       ''')
 
+print("Welcome to Treasure Island.\nYour mission is to find the treasure.")
+
+choice_turn = input("You're at a crossroad, where do you want to go? Type 'left' or 'right': ").lower()
+if choice_turn == "right":
+    print("Game over! You fell off a cliff.")
+elif choice_turn == "left":
+    print("Well done! The game continues...")
+    choice_pool = input("You're reach a pool. Do you swim or wait? Type 'swim' or 'wait': ").lower()
+    if choice_pool == "swim":
+        print("Game over! Pool was full of fire🔥.")
+    elif choice_pool == "wait":
+        print("Well done! The game continues...")
+        choice_door = input("You're at three doors - Red, Blue and Yellow. Choose one. Type 'red', 'blue' or 'yellow': ").lower()
+        if choice_door == "red":
+            print("Game over! A bricks🧱 fell on your head.")
+        elif choice_door == "blue":
+            print("Game over! You were eaten by a bear🐻.")
+        elif choice_door == "yellow":
+            print("You are WIN the game! Take your treasure chest👑.")
