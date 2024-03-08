@@ -27,16 +27,16 @@ choice_turn = input("You're at a crossroad, where do you want to go? Type 'left'
 if choice_turn == "right":
     print("Game over! You fell off a cliff.")
 elif choice_turn == "left":
-    print("Well done! The game continues...")
-    choice_pool = input("You're reach a pool. Do you swim or wait? Type 'swim' or 'wait': ").lower()
+    choice_pool = input("You're come to a lake. There is an island in the middle of the lake. \
+                        Type 'wait' to wait for a boat. Type 'swim' to swim across: ").lower()
     if choice_pool == "swim":
-        print("Game over! Pool was full of fire🔥.")
+        print("Game over! You got attacked by an angry crocodile🐊.")
     elif choice_pool == "wait":
-        print("Well done! The game continues...")
-        choice_door = input("You're at three doors - Red, Blue and Yellow. Choose one. Type 'red', 'blue' or 'yellow': ").lower()
+        choice_door = input("You arrive at the island unharmed. There is a house with 3 doors - \
+                            Red, Blue and Yellow. Choose one. Type 'red', 'blue' or 'yellow': ").lower()
         if choice_door == "red":
             print("Game over! A bricks🧱 fell on your head.")
         elif choice_door == "blue":
-            print("Game over! You were eaten by a bear🐻.")
+            print("Game over! You got eaten by a bear🐻.")
         elif choice_door == "yellow":
             print("You are WIN the game! Take your treasure chest👑.")
