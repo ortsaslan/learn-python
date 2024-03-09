@@ -13,4 +13,4 @@ generator_ceil = len(names_lst) - 1
 index = random.randint(0, generator_ceil)
 
 # Print name from names list
-print(names_lst[index])
+print(f"{names_lst[index]} is going to buy the meal today!")
