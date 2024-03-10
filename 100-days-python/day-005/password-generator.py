@@ -17,7 +17,7 @@ passwd_digits_len = int(input("\nHow many digits would you like?\n"))
 ## define list-variable for password
 password = list()
 
-## define string-constants for all python letters, digits and punctuations
+## define string-constants for letters, digits and punctuations
 LETTERS = string.ascii_letters
 DIGITS = string.digits
 PUNCTUATIONS = string.punctuation
@@ -30,7 +30,7 @@ for _ in range(passwd_letters_len):
 for _ in range(passwd_digits_len):
     password.append(random.choice(DIGITS))
 
-## add symbols to
+## add symbols to password
 for _ in range(passwd_symbols_len):
     password.append(random.choice(PUNCTUATIONS))
 
