@@ -34,7 +34,7 @@ for _ in range(passwd_digits_len):
 for _ in range(passwd_symbols_len):
     password.append(random.choice(PUNCTUATIONS))
 
-## randomize assembled a password and join to string
+## randomize assembled password and join it to string
 random.shuffle(password)
 password = "".join(password)
 
