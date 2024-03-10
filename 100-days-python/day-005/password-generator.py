@@ -10,31 +10,37 @@ passwd_letters_len = int(input("\nHow many letters would you like in your passwo
 # Take amount of symbols in password
 passwd_symbols_len = int(input("\nHow many symbols would you like?\n"))
 
-# Take amount of numbers in password
-passwd_digits_len = int(input("\nHow many numbers would you like?\n"))
+# Take amount of digits in password
+passwd_digits_len = int(input("\nHow many digits would you like?\n"))
 
 # Generate password
-password = ""
+## define list-variable for password
+password = list()
+passwd_len = passwd_letters_len + passwd_symbols_len + passwd_digits_len
 
+for _ in range(passwd_len):
+    password.append(0)
+
+# define string-constants for all python letters, digits and punctuations
 LETTERS = string.ascii_letters
 DIGITS = string.digits
 PUNCTUATIONS = string.punctuation
 
 ## define letters pool
 letters_pool = ""
-for _ in range(passwd_letters_len + 1):
+for _ in range(passwd_letters_len):
     index = random.randint(0, len(LETTERS) - 1)
     letters_pool += LETTERS[index]
 
 ## define numbers pool
 digits_pool = ""
-for _ in range(passwd_digits_len + 1):
+for _ in range(passwd_digits_len):
     index = random.randint(0, len(DIGITS) - 1)
     digits_pool += DIGITS[index]
 
 ## define symbols pool
 symbols_pool = ""
-for _ in range(passwd_symbols_len + 1):
+for _ in range(passwd_symbols_len):
     index = random.randint(0, len(PUNCTUATIONS) - 1)
     symbols_pool += PUNCTUATIONS[index]
 
@@ -42,8 +48,15 @@ for _ in range(passwd_symbols_len + 1):
 char_pool = letters_pool + digits_pool + symbols_pool
 
 ## assemble a password
-for _ in range(len(char_pool)):
-    index = random.randint(0, len(char_pool) - 1)
-    password += char_pool[index]
+for char in char_pool:
+    while True:
+        index = random.randint(0, len(password) - 1)
+        if password[index] == 0:
+            password[index] = char
+            break
+        continue
 
+password = "".join(password)
+
+# Print password
 print(password)
