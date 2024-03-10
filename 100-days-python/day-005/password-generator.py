@@ -29,20 +29,17 @@ PUNCTUATIONS = string.punctuation
 ## define letters pool
 letters_pool = ""
 for _ in range(passwd_letters_len):
-    index = random.randint(0, len(LETTERS) - 1)
-    letters_pool += LETTERS[index]
+    letters_pool += random.choice(LETTERS)
 
 ## define numbers pool
 digits_pool = ""
 for _ in range(passwd_digits_len):
-    index = random.randint(0, len(DIGITS) - 1)
-    digits_pool += DIGITS[index]
+    digits_pool += random.choice(DIGITS)
 
 ## define symbols pool
 symbols_pool = ""
 for _ in range(passwd_symbols_len):
-    index = random.randint(0, len(PUNCTUATIONS) - 1)
-    symbols_pool += PUNCTUATIONS[index]
+    symbols_pool += random.choice(PUNCTUATIONS)
 
 ## define all charcters pools
 char_pool = letters_pool + digits_pool + symbols_pool
