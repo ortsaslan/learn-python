@@ -86,6 +86,7 @@ while True:
                 hidden_word[i] = guess_letter
                 guesses -= 1
         if "_" not in hidden_word:
+            print(hidden_word)
             print("Player WINS!")
             break
         elif guesses <= 0:
