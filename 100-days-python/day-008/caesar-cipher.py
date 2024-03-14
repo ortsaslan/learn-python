@@ -47,9 +47,13 @@ def decode(alphabet, message, shift):
     return decoded_msg
 
 # Define cipher function
-def cipher(action, message, shift):
-    ALPHABET = string.ascii_lowercase
+def cipher():
+    ALPHABET = string.ascii_lowercase + ".!? "
     result = ""
+
+    action = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
+    message = input("Type your message (only latin letters, whitespace and !/./?):\n").lower()
+    shift = int(input("Type the shift number (from 1 to 29):\n"))
 
     if action == "encode":
         result = encode(ALPHABET, message, shift)
@@ -58,9 +62,5 @@ def cipher(action, message, shift):
     
     return result
 
-# Take input
-action = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
-message = input("Type your message:\n")
-shift = int(input("Type the shift number:\n"))
-
-print(cipher(action, message, shift))
+# Execute app
+print(cipher())
