@@ -18,9 +18,7 @@ def encode(alphabet, message, shift):
     
     actual_index = 0
     for letter in message:
-        for i in range(len(alphabet)):
-            if letter == alphabet[i]:
-                actual_index = i
+        actual_index = alphabet.index(letter)
 
         shifted_index = actual_index + shift
         if shifted_index > len(alphabet) - 1:
@@ -37,9 +35,7 @@ def decode(alphabet, message, shift):
 
     shifted_index = 0
     for letter in message:
-        for i in range(len(alphabet)):
-            if letter == alphabet[i]:
-                shifted_index = i
+        shifted_index = alphabet.index(letter)
 
         actual_index = shifted_index - shift
         decoded_msg += alphabet[actual_index]
