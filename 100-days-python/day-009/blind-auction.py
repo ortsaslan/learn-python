@@ -23,7 +23,6 @@ while True:
     next_bidder = input("\nAre there any bidders? Type 'yes' or 'no': ")
     if next_bidder == "no":
         break
-    continue
 
 # Compare bids, define highest one
 name = ""
