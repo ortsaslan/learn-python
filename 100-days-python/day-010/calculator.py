@@ -48,7 +48,8 @@ def calculator():
 
         print(f"\n{first_operand} {operator} {second_operand} = {result}")
 
-        next_calc = input(f"\nType 'c' to continue calculating with {result} as first number,\nType 'n' to start new calculation,\nType 'e' to exit from calculator: ")
+        next_calc = input(f"\nType 'c' to continue calculating with {result} as first number, \
+                          \nType 'n' to start new calculation,\nType 'e' to exit from calculator: ")
         if next_calc == "c":
             saved_result = result
         elif next_calc == "n":
@@ -57,5 +58,5 @@ def calculator():
         elif next_calc == "e":
             print("\nCalculator is turned off!")
             break
-         
+
 calculator()
