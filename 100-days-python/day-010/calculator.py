@@ -59,7 +59,8 @@ def calculator():
         operator = input("\nPick the operation (+, -, *, /): ")
         second_operand = int(input("\nEnter the second number: "))
 
-        result = operations[operator](first_operand, second_operand)
+        current_operation = operations[operator]
+        result = current_operation(first_operand, second_operand)
 
         print(f"\n{first_operand} {operator} {second_operand} = {result}")
 
