@@ -2,6 +2,7 @@
 ## Take operands and operator from stdin
 ## Print result of arithmetic operation in format: x + y = z
 ## Suggest further calculation with or without last result
+
 import os
 
 # Define operation functions
@@ -17,6 +18,15 @@ def multiply(x, y):
 def divide(x, y):
     return x / y
 
+# Define operations dict
+operations = {
+    "+": add,
+    "-": subtract,
+    "*": multiply,
+    "/": divide
+}
+
+# Define app's main function
 def calculator():
 
     calc_art = """
@@ -49,15 +59,7 @@ def calculator():
         operator = input("\nPick the operation (+, -, *, /): ")
         second_operand = int(input("\nEnter the second number: "))
 
-        result = 0
-        if operator == "+":
-            result = add(first_operand, second_operand)
-        elif operator == "-":
-            result = subtract(first_operand, second_operand)
-        elif operator == "*":
-            result = multiply(first_operand, second_operand)
-        elif operator == "/":
-            result = divide(first_operand, second_operand)
+        result = operations[operator](first_operand, second_operand)
 
         print(f"\n{first_operand} {operator} {second_operand} = {result}")
 
