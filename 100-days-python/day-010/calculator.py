@@ -64,11 +64,14 @@ def calculator():
 
         print(f"\n{first_operand} {operator} {second_operand} = {result}")
 
-        next_calc_with_result = input(f"\nType 'y' to continue calculating with {result} or type 'n' to start new calculation: ")
-        if next_calc_with_result == "y":
+        next_calc = input(f"\nType 'c' to continue calculating with {result} as first number,\nType 'n' to start new calculation,\nType 'e' to exit from calculator: ")
+        if next_calc == "c":
             saved_result = result
-        else:
+        elif next_calc == "n":
             saved_result = None
             os.system("clear")
+        elif next_calc == "e":
+            print("\nCalculator is turned off!")
+            break
          
 calculator()
