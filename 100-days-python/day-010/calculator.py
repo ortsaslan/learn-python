@@ -4,6 +4,19 @@
 ## Suggest further calculation with or without last result
 import os
 
+# Define operation functions
+def add(x, y):
+    return x + y
+
+def subtract(x, y):
+    return x - y
+
+def multiply(x, y):
+    return x * y
+
+def divide(x, y):
+    return x / y
+
 def calculator():
 
     calc_art = """
@@ -38,13 +51,13 @@ def calculator():
 
         result = 0
         if operator == "+":
-            result = first_operand + second_operand
+            result = add(first_operand, second_operand)
         elif operator == "-":
-            result = first_operand - second_operand
+            result = subtract(first_operand, second_operand)
         elif operator == "*":
-            result = first_operand * second_operand
+            result = multiply(first_operand, second_operand)
         elif operator == "/":
-            result = first_operand / second_operand
+            result = divide(first_operand, second_operand)
 
         print(f"\n{first_operand} {operator} {second_operand} = {result}")
 
