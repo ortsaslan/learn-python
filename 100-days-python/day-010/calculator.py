@@ -2,6 +2,7 @@
 ## Take operands and operator from stdin
 ## Print result of arithmetic operation in format: x + y = z
 ## Suggest further calculation with or without last result
+import os
 
 def calculator():
 
@@ -22,12 +23,18 @@ def calculator():
 |_____________________|
 """
 
-    print(calc_art)
+    saved_result = None
 
     while True:
-        first_operand = int(input("\nWhat's the first number? "))
+        
+        if saved_result == None:
+            print(calc_art)
+            first_operand = int(input("\nEnter the first number: "))
+        else:
+            first_operand = saved_result
+
         operator = input("\nPick the operation (+, -, *, /): ")
-        second_operand = int(input("\nWhat's the second number? "))
+        second_operand = int(input("\nEnter the second number: "))
 
         result = 0
         if operator == "+":
@@ -39,10 +46,13 @@ def calculator():
         elif operator == "/":
             result = first_operand / second_operand
 
-        print(f"\n{first_operand} {operator} {second_operand} = {result:.2f}")
+        print(f"\n{first_operand} {operator} {second_operand} = {result}")
 
-        is_next_calc = input("\nIs there another calculation? Type 'yes' or 'no': ")
-        if is_next_calc == "no":
-            break
-    
+        next_calc_with_result = input(f"\nType 'y' to continue calculating with {result} or type 'n' to start new calculation: ")
+        if next_calc_with_result == "y":
+            saved_result = result
+        else:
+            saved_result = None
+            os.system("clear")
+         
 calculator()
