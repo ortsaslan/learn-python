@@ -1,3 +1,3 @@
-# JetBrains Academy
+# Python Learning
 
-Repository for my training projects at JetBrains Academy.
+Repository for my different Python learning projects.
