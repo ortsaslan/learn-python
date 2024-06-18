@@ -11,11 +11,11 @@
 
 import string
 
+
 # Define encode function
 def encode(alphabet, message, shift):
-    
     encoded_msg = ""
-    
+
     actual_index = 0
     for letter in message:
         actual_index = alphabet.index(letter)
@@ -28,9 +28,9 @@ def encode(alphabet, message, shift):
 
     return encoded_msg
 
+
 # Define decode function
 def decode(alphabet, message, shift):
-
     decoded_msg = ""
 
     shifted_index = 0
@@ -41,6 +41,7 @@ def decode(alphabet, message, shift):
         decoded_msg += alphabet[actual_index]
 
     return decoded_msg
+
 
 # Define cipher function
 def cipher():
@@ -53,10 +54,11 @@ def cipher():
 
     if action == "encode":
         result = encode(ALPHABET, message, shift)
-    elif action =="decode":
+    elif action == "decode":
         result = decode(ALPHABET, message, shift)
-    
+
     return result
+
 
 # Execute app
 print(cipher())

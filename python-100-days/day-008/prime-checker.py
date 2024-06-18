@@ -1,5 +1,6 @@
 import math
 
+
 # Define function
 def prime_checker(num):
     check_result = f"{num} is a prime number!"
@@ -9,6 +10,7 @@ def prime_checker(num):
             check_result = f"{num} is not a prime number!"
             break
     print(check_result)
+
 
 # Take input and call the function
 n = int(input("Check this number: "))

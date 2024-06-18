@@ -6,18 +6,23 @@
 import os
 import art
 
+
 # Define operation functions
 def add(x, y):
     return x + y
 
+
 def subtract(x, y):
     return x - y
+
 
 def multiply(x, y):
     return x * y
 
+
 def divide(x, y):
     return x / y
+
 
 # Define operations dict
 operations = {
@@ -26,6 +31,7 @@ operations = {
     "*": multiply,
     "/": divide
 }
+
 
 # Define app's main function
 def calculator():
@@ -59,5 +65,6 @@ def calculator():
         elif next_calc == "e":
             print("\nCalculator is turned off!")
             break
+
 
 calculator()
