@@ -108,3 +108,27 @@ root.columnconfigure(1, weight=1)
 root.rowconfigure(99, weight=2)
 root.rowconfigure(100, weight=1)
 
+# def callback func for submit event
+def on_submit():
+    """To be run when the user submits"""
+    name = name_inp.get()
+    number = num_inp.get()
+
+    selected_idx = color_inp.curselection()
+    if selected_idx:
+        color = color_inp.get(selected_idx)
+    else:
+        color = ""
+    haiku = banana_haiku_inp.get("1.0", tk.END)
+
+    message = (
+        f"Thanks for taking the survey, {name}. \n",
+        f"Enjoy your {number} {color} bananas!"
+    )
+    output_line.configure(text=message)
+    
+    print(haiku)
+
+submit_btn.configure(command=on_submit)
+
+
