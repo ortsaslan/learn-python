@@ -131,4 +131,4 @@ def on_submit():
 
 submit_btn.configure(command=on_submit)
 
-
+root.mainloop()
