@@ -125,23 +125,35 @@ root.rowconfigure(100, weight=1)
 # def callback func for submit event
 def on_submit():
     """To be run when the user submits"""
-    name = name_inp.get()
-    number = num_inp.get()
+    name = name_var.get()
 
-    selected_idx = color_inp.curselection()
-    if selected_idx:
-        color = color_inp.get(selected_idx)
-    else:
-        color = ""
+    try:
+        number = num_var.get()
+    except tk.TclError:
+        number = 10000
+
+    color = color_var.get()
+    banana_eater = eater_var.get()
+    plantain_eater = plantain_var.get()
+
     haiku = banana_haiku_inp.get("1.0", tk.END)
 
-    message = (
-        f"Thanks for taking the survey, {name}. \n",
-        f"Enjoy your {number} {color} bananas!"
-    )
-    output_line.configure(text=message)
+    message = f"Thanks for taking the survey, {name}.\n"
     
-    print(haiku)
+    if not banana_eater:
+        message += "Sorry you don't like bananas!\n"
+    else:
+        message += f"Enjoy your {number} {color} bananas!\n"
+    
+    if plantain_eater:
+        message += "Enjoy your plantains!"
+    else:
+        message += "May you successfully avoid plantains!"
+    
+    if haiku.strip():
+        message += f"\n\nYour Haiku:\n{haiku}"
+
+    output_var.set(message)
 
 submit_btn.configure(command=on_submit)
 
