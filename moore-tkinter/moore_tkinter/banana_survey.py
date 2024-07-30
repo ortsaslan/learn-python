@@ -81,7 +81,7 @@ submit_btn = tk.Button(root, text="Submit Survey")
 
 # add output
 output_var = tk.StringVar(value="")
-output_line = tk.Label(root, textvariable=output_var, anchor="w", justify="left")
+#output_line = tk.Label(root, textvariable=output_var, anchor="w", justify="left")
 
 # arrage app title
 title.grid(columnspan=2)
@@ -115,7 +115,10 @@ banana_haiku_inp.grid(row=9, columnspan=2, sticky="NSEW")
 submit_btn.grid(row=99)
 
 # arrange output
-output_line.grid(row=100, columnspan=2, sticky="NSEW")
+#output_line.grid(row=100, columnspan=2, sticky="NSEW")
+tk.Label(
+  root, textvariable=output_var, anchor='w', justify='left'
+).grid(row=100, columnspan=2, sticky="NSEW")
 
 # extra space occupation
 root.columnconfigure(1, weight=1)
