@@ -21,40 +21,53 @@ title = tk.Label(
 )
 
 # add name input
+name_var = tk.StringVar(root)
 name_label = tk.Label(root, text="What is your name")
-name_inp = tk.Entry(root)
+name_inp = tk.Entry(root, textvariable=name_var)
 
 # add checkbox
+eater_var = tk.BooleanVar()
 eater_inp = tk.Checkbutton(
     root,
+    variable=eater_var,
     text="Check this box if you eat bananas"
 )
 
 # add input for numbers (choose from predefined range and incrementation step)
+num_var = tk.IntVar(value=3)
 num_label = tk.Label(
     root,
     text="How many bananas do you eat per day?"
 )
-num_inp = tk.Spinbox(root, from_=0, to=1000, increment=1)
+num_inp = tk.Spinbox(
+    root,
+    textvariable=num_var,
+    from_=0,
+    to=1000,
+    increment=1
+)
 
 # add input for predefined options
+color_var = tk.StringVar(value="Any")
 color_label = tk.Label(
     root,
     text="What is the best color for banana?"
 )
-color_inp = tk.Listbox(root, height=1)
 color_choices = (
     "Any", "Green", "Green-Yellow",
     "Yellow", "Brown Spotted", "Black"
 )
-for choice in color_choices:
-    color_inp.insert(tk.END, choice)
+color_inp = tk.OptionMenu(
+    root, color_var, *color_choices
+)
 
 # add radiobutton choose options
 plantain_label = tk.Label(root, text="Do you eat plantains?")
 plantain_frame = tk.Frame(root)
-plantain_yes_inp = tk.Radiobutton(plantain_frame, text="Yes")
-plantain_no_inp = tk.Radiobutton(plantain_frame, text="Ewww, no!")
+
+plantain_var = tk.BooleanVar()
+plantain_yes_inp = tk.Radiobutton(plantain_frame, text="Yes", value=True, variable=plantain_var)
+plantain_no_inp = tk.Radiobutton(plantain_frame, text="Ewww, no!", value=False, variable=plantain_var)
 
 # add multiline text input
 banana_haiku_label = tk.Label(
@@ -67,7 +80,8 @@ banana_haiku_inp = tk.Text(root, height=3)
 submit_btn = tk.Button(root, text="Submit Survey")
 
 # add output
-output_line = tk.Label(root, text="", anchor="w", justify="left")
+output_var = tk.StringVar(value="")
+output_line = tk.Label(root, textvariable=output_var, anchor="w", justify="left")
 
 # arrage app title
 title.grid(columnspan=2)
